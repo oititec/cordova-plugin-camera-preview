@@ -452,7 +452,7 @@ public class CameraActivity extends Fragment {
         if (!disableExifHeaderStripping) {
           Matrix matrix = new Matrix();
           if (cameraCurrentlyLocked == Camera.CameraInfo.CAMERA_FACING_FRONT) {
-            matrix.preScale(1.0f, -1.0f);
+            matrix.preScale(-1.0f, -1.0f);
           }
 
           ExifInterface exifInterface = new ExifInterface(new ByteArrayInputStream(data));
@@ -672,7 +672,7 @@ public class CameraActivity extends Fragment {
           params.setRotation(mPreview.getDisplayOrientation());
 
           mCamera.setParameters(params);
-          mCamera.takePicture(shutterCallback, null, jpegPictureCallback);
+          mCamera.takePicture(null, null, jpegPictureCallback);
         }
       }.start();
     } else {
